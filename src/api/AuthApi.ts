@@ -16,7 +16,7 @@ class AuthApi {
                 res.json({
                     token: jwt.sign(
                         { email: user.email, fullName: user.fullName, _id: user._id },
-                        "RESTFULAPIs")
+                        "RESTFULAPIs", { expiresIn: 24*60*60 })
                 });
             });
         } catch (error) {

@@ -40,9 +40,6 @@ const UserSchema = new mongoose.Schema({
     location: { 
         type: [String], 
         length: 2 
-    },
-    courses: { 
-        type: [String] 
     }
 })
 
