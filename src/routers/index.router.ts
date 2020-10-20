@@ -1,7 +1,7 @@
 import { Express } from "express";
-import userRouter from "./UserRouter";
-import authRouter from "./AuthRouter";
-import merchantRouter from "./MerchantRouter";
+import userRouter from "./user.router";
+import authRouter from "./auth.router";
+import merchantRouter from "./merchant.router";
 
 export class MainRouter {
 

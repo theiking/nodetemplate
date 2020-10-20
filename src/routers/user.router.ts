@@ -1,4 +1,4 @@
-import userApi from "../api/UserApi";
+import userApi from "../controller/user.controller";
 import { Router} from "express";
 export class UserRoute {
     private router: Router;

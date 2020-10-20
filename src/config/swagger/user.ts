@@ -77,7 +77,7 @@ export const deleteUser = {
 }
 
 export const getUserById = {
-  summary: "Find user with give ID",
+  summary: "Find user with given ID",
     tags: [
       "Users"
     ],
@@ -95,7 +95,7 @@ export const getUserById = {
 }
 
 export const updateUser = {
-    summary: "Update user with give ID",
+    summary: "Update user with given ID",
     tags: [
       "Users"
     ],

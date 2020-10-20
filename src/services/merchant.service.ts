@@ -1,5 +1,5 @@
 import Merchant from '../models/Merchant';
-import { GenericService } from '../services/GerericService';
+import { GenericService } from './generic.service';
 
  class MerchantService extends GenericService {
 

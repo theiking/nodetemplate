@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
 import Merchant from "../models/Merchant";
-import MerchantService from "../services/MerchantService";
+import MerchantService from "../services/merchant.service";
 
 class MerchantApi {
     
     allMerchants = (req: Request, res: Response, next: any) => {
-       
         MerchantService.getAll()
             .then(merchants => res.send(merchants).status(200))
             .catch(()=> res.status(404));            
@@ -35,7 +34,7 @@ class MerchantApi {
             }))
             .catch((err) => res.status(500).json(err))
     }
-
+    
     updateMerchant = (req: Request, res: Response, next: any) => {
         MerchantService.update( req.params.id , req.body)
             .then(merchant => res.send(merchant).status(200))

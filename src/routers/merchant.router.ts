@@ -1,4 +1,4 @@
-import merchantApi from "../api/MerchantApi";
+import merchantApi from "../controller/merchant.controller";
 import { Router } from "express";
 
 export class MerchantRouter {

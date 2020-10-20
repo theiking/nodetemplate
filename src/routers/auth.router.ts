@@ -1,4 +1,4 @@
-import authApi from "../api/AuthApi";
+import authApi from "../controller/auth.controller";
 import { Router } from "express";
 
 
@@ -11,8 +11,8 @@ export class AuthRouter {
     }
 
     init() {
-        this.router.post("/signin", authApi.signIn);
         this.router.post("/signup", authApi.signup);
+        this.router.post("/signin", authApi.signIn);
     }
 
     getRouter(): Router {

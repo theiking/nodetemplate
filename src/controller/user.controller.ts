@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/User";
-import UserService from "../services/UserService";
+import UserService from "../services/user.service";
 
 class UserApi {
 

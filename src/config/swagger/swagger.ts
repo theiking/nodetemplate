@@ -4,14 +4,14 @@ export const swaggerDocument = {
   swagger: "2.0",
   info: {
     version: "1.0.0",
-    title: "My User Project CRUD",
-    description: "My User Project Application API",
+    title: "Food app api documentation",
+    description: "Food app Application API",
     license: {
       name: "Baemin",
-      url: "http://localhost:3000/api/docs"
+      url: "http://192.168.1.140:3000/api/docs"
     }
   },
-  host: "localhost:3000",
+  host: "192.168.1.140:3000",
   basePath: "/",
   tags: [
     {
@@ -54,10 +54,6 @@ export const swaggerDocument = {
         "location",
       ],
       properties: {
-        _id: {
-          type: "integer",
-          uniqueItems: true
-        },
         fullName: {
           type: "string"
         },

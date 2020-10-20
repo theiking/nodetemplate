@@ -7,7 +7,7 @@ export abstract class GenericService {
     constructor(model: typeof Model) {
         this.GenericModel = model;
     }
-
+    
     getAll = (): Promise<Document[]> => 
         this.GenericModel.find({})
             .then(documents => { return documents; })

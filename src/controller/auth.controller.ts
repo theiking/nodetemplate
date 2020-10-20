@@ -1,7 +1,11 @@
 import { Request, Response } from "express";
 import User from "../models/User";
-import UserService from "../services/UserService";
+import UserService from "../services/user.service";
 import * as jwt from "jsonwebtoken";
+import * as dotenv from "dotenv"
+
+dotenv.config();
+const secretKey = process.env.SECRET_KEY;
 
 class AuthApi {
 
@@ -16,7 +20,7 @@ class AuthApi {
                 res.json({
                     token: jwt.sign(
                         { email: user.email, fullName: user.fullName, _id: user._id },
-                        "RESTFULAPIs", { expiresIn: 24*60*60 })
+                        secretKey, { expiresIn: 24*60*60 })
                 });
             });
         } catch (error) {

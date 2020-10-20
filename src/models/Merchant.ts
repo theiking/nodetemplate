@@ -9,6 +9,18 @@ const MerchantSchema = new mongoose.Schema({
     state: { type: String, enum: State},
     phone: { type: String, minLength: 9},
     image: { type: String },
+    openHours: {
+        type: [{
+            openAt: String,
+            closeAt: String,
+        }],
+        maxLength:2
+    },
+    dish: {
+        type: [{
+            
+        }]
+    }
 })
 
 const Merchant = mongoose.model('Merchant', MerchantSchema);

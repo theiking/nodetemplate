@@ -1,5 +1,5 @@
 import  User  from '../models/User';
-import { GenericService } from './GerericService';
+import { GenericService } from './generic.service';
 
 
 class UserService extends GenericService {
