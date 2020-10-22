@@ -1,12 +1,12 @@
-import { Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import * as jwt from 'jsonwebtoken';
-import * as dotenv from "dotenv"
+import * as dotenv from "dotenv";
 
 dotenv.config();
 const secretKey = process.env.SECRET_KEY;
 
 
-export const checkToken = (req: Request, res: Response, next: any) => {
+export const checkToken = (req: Request, res: Response, next: NextFunction) => {
 
     if (req.path.startsWith("/api/auth")||req.path.startsWith("/api/docs")) {
         return next();
@@ -32,7 +32,7 @@ export const checkToken = (req: Request, res: Response, next: any) => {
     }
 };
 
-export const protectedRoute = (req: Request, res: Response, next: any) => {
+export const protectedRoute = (req: Request, res: Response, next: NextFunction) => {
     
     if (req.path.startsWith("/api/auth")||req.path.startsWith("/api/docs")) {
         return next();

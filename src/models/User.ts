@@ -4,7 +4,7 @@ import { Model, Document } from "mongoose";
 import  isEmail  from "validator/lib/isEmail";
 
 export interface IUser extends Document {
-    fullName: string;
+    fullname: string;
     email: string;
     password: string;
 }
@@ -19,20 +19,24 @@ const UserSchema = new mongoose.Schema({
         type: String, 
         maxlength: 40, 
         minlength: 6, 
-        validate: [isEmail,'Please input valid email']
+        validate: [isEmail,'Please input valid email'],
+        required: true
     },
     password: { 
         type: String, 
-        minlength: 8, 
-        maxlength: 30 
+        // minlength: 8, 
+        maxlength: 30,
+        required: true
     },
-    fullName: { 
+    fullname: { 
         type: String,  
-        maxlength: 40 
+        maxlength: 40,
+        required: true
     },
     phone: { 
         type: String, 
-        minlength: 9 
+        // minlength: 9,
+        required: true
     },
     address: { 
         type: String 
@@ -67,6 +71,4 @@ UserSchema.pre('save', function(next) {
 
 export type UserModel = Model<IUser> & IUserModel & IUser;
 
-const User = <UserModel>mongoose.model<IUser>("User", UserSchema);
-
-export default User;
+export default <UserModel>mongoose.model<IUser>("User", UserSchema);;

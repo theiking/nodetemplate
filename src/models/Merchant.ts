@@ -1,5 +1,15 @@
 import * as mongoose from 'mongoose';
 import { State, District } from '../config/common/enum';
+import { Document } from 'mongoose';
+
+export interface IMerchant extends Document{
+    name: string,
+    address: string,
+    locations: string[],
+    district: string,
+    state: string,
+    phone: string,
+}
 
 const MerchantSchema = new mongoose.Schema({
     name: { type: String, minLength: 6, maxLength: 30 },
@@ -14,15 +24,18 @@ const MerchantSchema = new mongoose.Schema({
             openAt: String,
             closeAt: String,
         }],
-        maxLength:2
+        length: 2
     },
     dish: {
         type: [{
-            
+            name: { type: String, minLength: 6, maxLength: 30},
+            price: { type: Number},
+            image: { type: String},
+            description: { type: String}
         }]
     }
 })
 
-const Merchant = mongoose.model('Merchant', MerchantSchema);
+const Merchant = mongoose.model<IMerchant>('Merchant', MerchantSchema);
 
 export default Merchant;

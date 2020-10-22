@@ -1,4 +1,4 @@
-import merchantApi from "../controller/merchant.controller";
+import merchantController from "../controller/merchant.controller";
 import { Router } from "express";
 
 export class MerchantRouter {
@@ -10,11 +10,11 @@ export class MerchantRouter {
     }
 
     init() {
-        this.router.get("/:id", merchantApi.getMerchant);
-        this.router.get("/", merchantApi.allMerchants);
-        this.router.post("/", merchantApi.addMerchant);
-        this.router.delete("/:id", merchantApi.deleteMerchant);
-        this.router.put("/:id", merchantApi.updateMerchant);
+        this.router.get("/:id", merchantController.getMerchant);
+        this.router.get("/", merchantController.allMerchants);
+        this.router.post("/", merchantController.addMerchant);
+        this.router.delete("/:id", merchantController.deleteMerchant);
+        this.router.put("/:id", merchantController.updateMerchant);
     }
 
     getRouter(): Router {

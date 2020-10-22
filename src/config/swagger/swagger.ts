@@ -1,4 +1,6 @@
 import * as User from './user'
+import * as Auth from './auth';
+import { definitions} from './definitions';
 
 export const swaggerDocument = {
   swagger: "2.0",
@@ -17,6 +19,10 @@ export const swaggerDocument = {
     {
       name: "Users",
       description: "API for users in the system"
+    },
+    {
+      name: "Auth",
+      description: "API for signup and signin"
     }
   ],
   schemes: [
@@ -40,83 +46,14 @@ export const swaggerDocument = {
       get: User.getUserById,
       delete: User.deleteUser,
       put: User.updateUser
+    },
+    "/api/auth/signin": {
+      post: Auth.signIn,
+    },
+    "/api/auth/signup": {
+      post: Auth.signUp
     }
   },
-  definitions: {
-    User: {
-      required: [
-        "fullName",
-        "_id",
-        "email",
-        "password",
-        "phone",
-        "address",
-        "location",
-      ],
-      properties: {
-        fullName: {
-          type: "string"
-        },
-        email: {
-          type: "string"
-        },
-        password: {
-          type: "string"
-        },
-        phone: {
-          type: "string"
-        },
-        address: {
-          type: "string"
-        },
-        location: {
-          type: "array",
-          items: {
-            type: "string"
-          }
-        }
-      }
-
-    },
-    UpdateUser: {
-      required: [
-        "fullName",
-        "email",
-        "password",
-        "phone",
-        "address",
-        "location",
-      ],
-      properties: {
-        fullName: {
-          type: "string"
-        },
-        email: {
-          type: "string"
-        },
-        password: {
-          type: "string"
-        },
-        phone: {
-          type: "string"
-        },
-        address: {
-          type: "string"
-        },
-        location: {
-          type: "array",
-          items: {
-            type: "string"
-          }
-        }
-      }
-
-
-    },
-    Users: {
-      type: "array",
-      $ref: "#/definitions/User"
-    }
-  }
+  definitions: definitions,
 }
 

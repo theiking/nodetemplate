@@ -14,7 +14,4 @@ const RiderSchema = new mongoose.Schema({
     img: { type: String}
 })
 
-
-const Rider = mongoose.model('Rider',RiderSchema)
-
-export default Rider;
+export default mongoose.model('Rider',RiderSchema);

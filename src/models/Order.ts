@@ -2,11 +2,15 @@ import * as mongoose from "mongoose";
 
 const OrderSchema = new mongoose.Schema({
     merchant: {
-        type: {},
+        type: {
+            name: String,
+            address: String,
+            locations: [String],
+            district: String,
+            state: String,
+            phone: String
+        },
     }
 })
 
-
-const Order = mongoose.model('Order',OrderSchema);
-
-export default Order;
+export default mongoose.model('Order',OrderSchema);;

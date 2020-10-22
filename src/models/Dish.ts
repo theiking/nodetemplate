@@ -1,4 +1,12 @@
 import * as mongoose from 'mongoose';
+import { Document } from 'mongoose';
+
+interface IDish extends Document {
+    name: string;
+    price: number;
+    image: string;
+    description: string;
+}
 
 const DishSchema = new mongoose.Schema ({
     name: { type: String, minLength: 6, maxLength: 30},
@@ -7,6 +15,4 @@ const DishSchema = new mongoose.Schema ({
     description: { type: String}
 })
 
-const Dish = mongoose.model('Dish',DishSchema);
-
-export default Dish;
+export default mongoose.model<IDish>('Dish',DishSchema);
