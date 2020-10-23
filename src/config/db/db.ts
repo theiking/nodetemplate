@@ -1,6 +1,6 @@
 import * as mongoose from "mongoose";
 
-export const connect = mongoose.connect('mongodb+srv://foodapp:823082@cluster0.onxxk.mongodb.net/foodapp?retryWrites=true&w=majority',{ 
+export const connect = mongoose.connect('mongodb://localhost:27017/elearning',{ 
         useNewUrlParser: true, 
         useUnifiedTopology: true
     }

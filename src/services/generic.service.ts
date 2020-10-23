@@ -7,31 +7,27 @@ export abstract class GenericService {
     constructor(model: typeof Model) {
         this.GenericModel = model;
     }
-    
-    getAll = (): Promise<Document[]> => 
+
+    getAll = (): Promise<Document[]> =>
         this.GenericModel.find({})
             .then(documents => { return documents; })
-            .catch();
 
-    getOne = (id: String): Promise<Document> => 
+    getOne = (id: string): Promise<Document> =>
         this.GenericModel.findOne({ _id: id })
-            .then(document => { return document; })
-            .catch();
+            .then(document => {
+                return document;
+            })
 
-    add = (document: Document) => 
+    add = (document: Document) =>
         document.save({})
             .then(success => { return success; })
-            .catch();
 
-    deleteById = (id: String) => 
+    deleteById = (id: string) =>
         this.GenericModel.deleteOne({ _id: id })
             .then(success => { return success; })
-            .catch();
 
-    update = (id: String, document: any) => 
+    update = (id: string, document: any) =>
         this.GenericModel.findByIdAndUpdate({ _id: id }, document)
             .then(success => { return success; })
-            .catch();
-    
-    
+
 }

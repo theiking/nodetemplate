@@ -10,7 +10,6 @@ export class MainRouter {
         app.use('/api/user', userRouter);
         app.use('/api/merchant', merchantRouter);
         app.use('/api/rider', riderRouter);
-        
     }
 }
 

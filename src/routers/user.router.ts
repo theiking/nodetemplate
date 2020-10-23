@@ -12,7 +12,7 @@ export class UserRoute {
 
     init() {        
         this.router.get("/:id", Cache.getUserById,userController.getUserById);
-        this.router.get("/", Cache.getAllUsers,userController.allUsers);
+        this.router.get("/", Cache.getAllUsers, userController.allUsers);
         this.router.post("/",userController.addUser);
         this.router.delete("/:id",userController.deleteUser);
         this.router.put("/:id",userController.updateUser);

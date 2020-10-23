@@ -14,7 +14,7 @@ class MerchantController {
         MerchantService.getOne(req.params.id)
             .then(merchant => res.send(merchant).status(200))
             .catch(()=> res.status(404).json({
-                "message": "Not found"
+                message: "Not found"
             }));
     }
 
@@ -22,7 +22,7 @@ class MerchantController {
         let merchant = new Merchant(req.body);
         MerchantService.add(merchant)
             .then(() => res.status(201).json({
-                "message": "Success"
+                wmessage: "Success"
             })) 
             .catch(() => res.status(500).send(next));
     }
@@ -30,7 +30,7 @@ class MerchantController {
     deleteMerchant = (req: Request, res: Response, next: NextFunction) => {
         MerchantService.deleteById( req.params.id )
             .then(() => res.status(200).json({
-                "message": "Success"
+                message: "Success"
             }))
             .catch((err) => res.status(500).json(err))
     }
@@ -39,6 +39,7 @@ class MerchantController {
         MerchantService.update( req.params.id , req.body)
             .then(merchant => res.send(merchant).status(200))
             .catch(() => res.status(500).send(next));
+        
     }
 }
 

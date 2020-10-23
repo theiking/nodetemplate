@@ -69,6 +69,7 @@ UserSchema.pre('save', function(next) {
     });
 });
 
+
 export type UserModel = Model<IUser> & IUserModel & IUser;
 
 export default <UserModel>mongoose.model<IUser>("User", UserSchema);;

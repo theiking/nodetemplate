@@ -7,13 +7,11 @@ import * as authMiddlewares from "./middlewares/auth.middleware";
 import * as swaggerUi from "swagger-ui-express";
 import { swaggerDocument } from "./config/swagger/swagger";
 import * as dotenv from "dotenv";
-import * as NodeCache from "node-cache";
-
-export const cache = new NodeCache();
 
 const options = {
     swaggerOptions: {
-        authAction: { JWT: { name: "JWT", schema: { type: "apiKey", in: "header", name: "Authorization", description: "" }, value: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGdtYWlsLmNvbSIsIl9pZCI6IjVmODk0NzU5MWMzY2NiNTQ4ZTJlZGRiOCIsImlhdCI6MTYwMzI2Nzc1NSwiZXhwIjoxNjAzMzU0MTU1fQ.M9frGS04h7bHHWlCqqSZRbjZRqkllxBftuLsxMsnTdE" } }
+        authAction: { JWT: { name: "JWT", schema: { type: "apiKey", in: "header", name: "Authorization", description: "" }, value: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGdtYWlsLmNvbSIsIl9pZCI6IjVmODk0NzU5MWM"+
+        +"zY2NiNTQ4ZTJlZGRiOCIsImlhdCI6MTYwMzI2Nzc1NSwiZXhwIjoxNjAzMzU0MTU1fQ.M9frGS04h7bHHWlCqqSZRbjZRqkllxBftuLsxMsnTdE" } }
     }
 };
 
@@ -21,9 +19,10 @@ dotenv.config();
 
 const port = process.env.PORT || 3000;
 
-export class Express {
+export class Express { 
 
     public app: express.Express;
+    
     constructor() {
         this.app = express();
         this.setupMongo();
@@ -34,7 +33,6 @@ export class Express {
     }
 
     private swaggerSetup() {
-
         this.app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
     }
 
