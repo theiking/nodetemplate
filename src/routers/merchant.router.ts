@@ -1,5 +1,6 @@
 import merchantController from "../controller/merchant.controller";
 import { Router } from "express";
+import Cache from "../middlewares/cache.middleware";
 
 export class MerchantRouter {
     private router: Router;
@@ -10,8 +11,8 @@ export class MerchantRouter {
     }
 
     init() {
-        this.router.get("/:id", merchantController.getMerchant);
-        this.router.get("/", merchantController.allMerchants);
+        this.router.get("/:id", Cache.getById , merchantController.getMerchant);
+        this.router.get("/", Cache.getAll, merchantController.allMerchants);
         this.router.post("/", merchantController.addMerchant);
         this.router.delete("/:id", merchantController.deleteMerchant);
         this.router.put("/:id", merchantController.updateMerchant);

@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import { State } from '../config/common/enum';
+import { States, getEnumvalues} from '../config/common/enum';
 
 const RiderSchema = new mongoose.Schema({
     name: {
@@ -9,7 +9,7 @@ const RiderSchema = new mongoose.Schema({
     email: { type: String },
     phone: { type: String },
     address: { type: String },
-    status: { type: String, enum: State },
+    status: { type: String, enum: getEnumvalues(States) },
     joinedAt: { type: Date },
     img: { type: String },
     idcard: { type: String, createIndex: true},

@@ -7,19 +7,18 @@ const redisClient = redis.createClient(PORT_REDIS);
 
 class Cache {
 
-    getAllUsers(req: Request, res: Response, next: NextFunction) {
-        
-        redisClient.get('getallusers',(err,data)=> {
+    getAll(req: Request, res: Response, next: NextFunction) {
+
+        redisClient.get(req.baseUrl,(err,data)=> {
             if(err) res.status(400).send("ERROR");
-            if(data) res.status(200).json(JSON.parse(data));
+            if(data) {res.status(200).send(JSON.parse(data));}
             else next();
         })
     }
 
-    getUserById(req: Request, res: Response, next: NextFunction) {
+    getById(req: Request, res: Response, next: NextFunction) {
 
-        redisClient.get('getallusers',(err,data)=> {
-
+        redisClient.get(req.baseUrl,(err,data)=> {
             if(err) res.status(400).send("ERROR");
             if(!data) return next();
 
@@ -27,31 +26,6 @@ class Cache {
             let user = users.find(u => u._id === req.params.id);
 
             if(user) res.status(200).json(user);
-            else next();
-
-        })
-    }
-
-    allOrders =  (req: Request, res: Response, next: NextFunction) => {
-        redisClient.get('allOders', (err,data)=> {
-
-            if(err) res.status(400).send("ERROR");
-
-            if(data) res.status(200).json(JSON.parse(data));
-            else next();
-        })
-    }
-
-    getOrderById = (req: Request, res: Response, next: NextFunction) => {
-        redisClient.get('getallusers',(err,data)=> {
-            
-            if(err) res.status(400).send("ERROR");
-            if(!data) return next();
-
-            let orders: any[] = JSON.parse(data);
-            let order = orders.find(u => u._id === req.params.id);
-
-            if(order) res.status(200).json(order);
             else next();
 
         })

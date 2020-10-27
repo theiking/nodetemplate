@@ -1,5 +1,5 @@
 import * as mongoose from "mongoose";
-import { State } from "../config/common/enum"
+import { States, getEnumvalues } from "../config/common/enum"
 const OrderSchema = new mongoose.Schema({
     merchantId: { type: String, required: true},
     merchantName: { type: String, required: true},
@@ -10,7 +10,7 @@ const OrderSchema = new mongoose.Schema({
     distance: { type: Number, required: true },
     deliveryfee: { type: Number, required: true },
     orderfee: { type: Number, required: true },
-    state: { type: String, enum: State, required: true },
+    state: { type: String, enum: getEnumvalues(States), required: true },
     dish: {
         type: [{
             _id: String,

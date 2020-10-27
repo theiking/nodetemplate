@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { State, District } from '../config/common/enum';
+import {District, States, getEnumvalues} from '../config/common/enum';
 import { Document } from 'mongoose';
 
 export interface IMerchant extends Document {
@@ -18,8 +18,8 @@ const MerchantSchema = new mongoose.Schema({
     name: { type: String, minLength: 6, maxLength: 30 },
     address: { type: String, minLength: 10 },
     location: { type: [String] },
-    district: { type: String, enum: District },
-    state: { type: String, enum: State },
+    district: { type: String, enum: getEnumvalues(District) },
+    state: { type: String, enum: getEnumvalues(States) },
     phone: { type: String, minLength: 9 },
     image: { type: String },
     openHours: {

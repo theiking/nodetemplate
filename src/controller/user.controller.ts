@@ -14,7 +14,7 @@ class UserController {
 
         UserService.getAll()
             .then(users => {
-                redisClient.set('getallusers', JSON.stringify(users));
+                redisClient.set(req.baseUrl, JSON.stringify(users));
                 res.json(users).status(200);
             })
             .catch(err => {
@@ -36,7 +36,7 @@ class UserController {
         let user = new User(req.body);
         UserService.add(user)
             .then(() => {
-                redisClient.del('getallusers');
+                redisClient.del(req.baseUrl);
                 res.status(201).json({ message: "Regist successfully" });
             })
             .catch((err) => res.status(502).send(err));
@@ -46,7 +46,7 @@ class UserController {
 
         UserService.deleteById(req.params.id)
             .then(() => {
-                redisClient.del('getallusers');
+                redisClient.del(req.baseUrl);
                 res.status(200).json({ message: "success" });
             })
             .catch(() => res.status(502).send(next));
@@ -56,7 +56,7 @@ class UserController {
 
         UserService.update(req.params.id, req.body)
             .then(user => {
-                redisClient.del('getallusers');
+                redisClient.del(req.baseUrl);
                 res.send(user).status(200);
             })
             .catch(() => res.status(502).send("FAIL"));

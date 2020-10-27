@@ -9,6 +9,7 @@ dotenv.config();
 const secretKey = process.env.SECRET_KEY;
 
 class AuthController {
+
     signIn = async function (req: Request, res: Response, next: NextFunction) {
         try {
             let user = await User.findOne({ email: req.body.email });

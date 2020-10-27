@@ -44,3 +44,4 @@ export const protectedRoute = (req: Request, res: Response, next: NextFunction) 
     
     res.status(401).send('Unauthorized');
 }
+    
